@@ -1,5 +1,5 @@
 # SimpleStore
-Tienda online simple en la que puede ver y buscar productos, el Frontend consume API que a su vez realiza solicitudes a la base de datos proporcionada.\
+Tienda online simple en la que puede ver y buscar productos, el Frontend consume API que a su vez realiza solicitudes a la base de datos proporcionada.
 
 [Repositorio API](https://github.com/techeca/SimpleStore-API)
 
@@ -39,6 +39,16 @@ Instancia de categorias en `main.js`
  const categorias = new CategoriasController(new CategoriasModel(), new CategoriasView());
 ```
 Esta instancia se encarga de solicitar/cargar los productos según la categoría seleccionada y controla el form de búsqueda.  
+
+Chequeo de conexión con API
+```javascript
+try {
+  let response = await fetch('http://localhost:3000');
+  status = await response.json();
+} catch (e) {
+  console.log(e.message);
+}
+```
 
 ### Index
 Se utiliza como referencia el archivo `index.html` ubicado en `/`.
