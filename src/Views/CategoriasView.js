@@ -19,16 +19,21 @@ export default class CategoriasView {
 
   //Carga las categorías en la navegación (dynamicNav)
   async mostrarCategorias(categorias) {
-      //Guardamos la información recibida y genera un botón en el fragmento por cada categoría
+
+      //Generamos fragmento para botones de categoría
       const categoriaFragment = document.createDocumentFragment();
+      //Insertamos loading mientras modificamos fragmento
       this.divRoot.appendChild(this.loading());
       try {
+        //Guarda/Espera la información recibida y genera un botón en el fragmento por cada categoría
         let result = await categorias;
         let newBtn = '';
+        //Insertamos 1 botón por cada categoría al fragmento
         for (var i = 0; i < result.categorias.length; i++) {
              newBtn =  this.generarBotonNav(result.categorias[i]);
              categoriaFragment.append(newBtn);
         }
+        //Insertamos fragmento en DOM
         this.categoriasContainer.appendChild(categoriaFragment);
         this.divRoot.style.display = 'none';
       } catch (e) {
@@ -38,30 +43,37 @@ export default class CategoriasView {
 
   //Lista los productos
   async insertarProductosEnContainer(data){
+    //Generamos fragmentos para productos y paginación
     const productosFragment = document.createDocumentFragment();
     const paginationFragment = document.createDocumentFragment();
+    //Guardamos data recibida
     let result = await data.productos ? data.productos : [];
     let paginas = await data.total ? data.total : [0];
     let newProducto = '';
-
+    //Validamos que hay resultados
     if(!result || result.length > 0){
+      //Insertamos productos en fragmento
       for (var i = 0; i < result.length; i++) {
-           newProducto =  this.generarTarjetaProducto(result[i]);
+           newProducto = this.generarTarjetaProducto(result[i]);
            productosFragment.append(newProducto);
       }
       //Se inserta paginación, Math.ceil para redondear al número superior
       for (var i = 0; i < Math.ceil(paginas[0].totalProductos/6); i++) {
         paginationFragment.append(this.generarBotonPaginacion(i));
       }
+      //Limpiamos e insertamos fragmentos de productos y paginación en DOM
       this.limpiarContainerProductos();
       this.productosContainer.appendChild(productosFragment);
       this.divPaginacion.appendChild(paginationFragment);
      }
+     console.log('No hay productos')
     }
 
   //Cambia la categoría actual (no confundir con cambiar página)
   cambiarCategoria(handler){
+      //Recibe cambiarCategoria del controller
       this.categoriasContainer.addEventListener('click', event => {
+        //Obtiene id de categoría seleccionada y lo envía al controller
         this.paginaSeleccionada = event.target.id;
         this.limpiarContainerProductos();
         this.productosContainer.appendChild(this.loading());
@@ -71,7 +83,10 @@ export default class CategoriasView {
 
   //Cambia la página actual de productos (no confundir con cambiar categoría)
   cambiarPagina(handler){
+    //Recibe cambiarPagina del controller
     this.divPaginacion.addEventListener('click', event => {
+      //Obtiene categoría actual y página seleccionada por el usuario y lo envñia al controller
+      //La categoría actual se va actualizando en this.paginaSeleccionada
       this.limpiarContainerProductos();
       this.productosContainer.appendChild(this.loading());
       handler(this.paginaSeleccionada, event.target.textContent)
@@ -80,7 +95,9 @@ export default class CategoriasView {
 
   //Busca productos por nombre
   buscarProducto(handler){
+    //Recibe buscarPorNombre del controller
     this.formBusqueda.addEventListener('submit', event => {
+      //Obtiene el contenido del input de búsqueda y lo envía al controller
       this.limpiarContainerProductos();
       this.productosContainer.appendChild(this.loading());
       event.preventDefault();

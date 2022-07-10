@@ -1,7 +1,7 @@
 export default class CategoriasModel {
   constructor() {
     this.categorias = this.solicitudCategorias() || [];
-    this.productos = [];
+    //this.productos = [];
   }
 
   getUrlApi(solicitud){
@@ -14,13 +14,14 @@ export default class CategoriasModel {
   }
 
 async solicitudCategorias() {
-    //prod https://api-g2zy.onrender.com/
+    //Solicita categorías a API
     let response = await fetch(this.getUrlApi('categorias'));
     let categorias = await response.json();
     return categorias;
   }
 
 async obtenerProductosPorCategoria(id, page) {
+      //Encaso de no recibir page (En caso de cambio de categoría) asigname por defecto 1
       const toPage = page ? page : 1
       let response = await fetch(`${this.getUrlApi('productosByCategoria')}?id=${id}&page=${toPage}`);
       let data = await response.json();
