@@ -66,7 +66,6 @@ export default class CategoriasView {
       this.productosContainer.appendChild(productosFragment);
       this.divPaginacion.appendChild(paginationFragment);
      }
-     console.log('No hay productos')
     }
 
   //Cambia la categoría actual (no confundir con cambiar página)
