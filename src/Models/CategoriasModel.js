@@ -21,7 +21,7 @@ async solicitudCategorias() {
   }
 
 async obtenerProductosPorCategoria(id, page) {
-      //Encaso de no recibir page (En caso de cambio de categoría) asigname por defecto 1
+      //Encaso de no recibir page (cambio de categoría) asignamos por defecto page = 1
       const toPage = page ? page : 1
       let response = await fetch(`${this.getUrlApi('productosByCategoria')}?id=${id}&page=${toPage}`);
       let data = await response.json();
