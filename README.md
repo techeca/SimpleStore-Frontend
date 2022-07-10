@@ -1,5 +1,6 @@
 # SimpleStore
-Tienda online simple en la que puede ver y buscar productos, el Frontend consume API que a su vez realiza solicitudes a la base de datos proporcionada.
+Tienda online simple en la que puede ver y buscar productos, el Frontend consume API que a su vez realiza solicitudes a la base de datos proporcionada.\
+[Repositorio API](https://github.com/techeca/SimpleStore-API)
 
 ## Instalación Frontend
 Desde la carpeta de su preferencia debemos clonar el repositorio:
