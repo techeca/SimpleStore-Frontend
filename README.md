@@ -90,7 +90,7 @@ this.btnBuscar = document.getElementById('btnBuscar');
 
 Las funciones `generarBotonNav`, `generarTarjetaProducto` y `generarBotonPaginacion` retornan un fragmento que luego es insertardo 1 o n veces.
 
-Funciones de utilidad.
+Utilidad\
 `loading`: Inserta un fragmento con un spinner (icono de loading).
 
 #### Index
@@ -141,10 +141,10 @@ Al realizar `npm run build:dev` se genera la web en la carpeta `/dist`.
   },
 ```
 
-# Demos
+# Demo
 Fue utilizado [Render](https://render.com) para alojar Frontend y API.
 
-[Frontend](https://frontend-tn1v.onrender.com)
+[Frontend](https://simplestore-front.onrender.com)
 
 # Img
 
