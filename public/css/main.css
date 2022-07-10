@@ -1,0 +1,151 @@
+.miCard {
+  min-width: 25%;
+  padding: 0px;
+  margin: 10px;
+}
+
+.imagenProducto {
+  margin-top: 20px;
+  height: 25vh;
+  object-fit: contain;
+}
+
+#formBusqueda {
+  margin-right: 10px;
+}
+
+.miniCardCarrito {
+  left: -290px;
+  top: 40px;
+  border: 1px solid #d3d3d3;
+  min-width: 320px;
+  font-size: 12px;
+}
+
+.nombreProdCarrito {
+  width: 50%;
+}
+
+.precioCantCarrito {
+  width: 10%;
+  margin-left: 20px;
+  margin-right: 10px;
+}
+
+.productosEnCarro {
+  margin-left: 15px;
+}
+
+.loading {
+  opacity: 0.3;
+}
+
+.myContent {
+  border: 0px;
+}
+
+.dropdown-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btnMenos {
+  max-width: 20%;
+  margin-left: 5px;
+}
+
+.btnAgregar {
+  border-radius: 0px 0px 3px 3px
+}
+
+#inputBusqueda {
+  width: auto;
+}
+
+.tituloCarrito {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.totalCompras {
+  width: 100%;
+  margin: 10px;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 6%;
+}
+
+.btnComprar {
+  margin-left: 10px;
+  margin-right: 6%;
+  margin-top: -2%;
+}
+
+.row {
+    margin-right: 0px;
+    display: flex;
+    justify-content: center;
+}
+
+#modalBody {
+  display: flex;
+  justify-content: center;
+}
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#myNotificaciones {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -150px; /* Divide value of min-width by 2 */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 8px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#myNotificaciones.show {
+  visibility: visible; /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+#root
+ {
+   position: fixed;
+   left: 0px;
+   right: 0px;
+   top: 0px;
+   bottom: 0px;
+   background-color: white;
+   z-index: 99; /* Higher than anything else in the document */
+   display: flex;
+   justify-content: center;
+   padding-top: 10%;
+ }
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
