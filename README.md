@@ -19,7 +19,7 @@ npm run serve
 ```
 http://localhost:8080
 
-### Detalles de Frontend
+## Detalles de Frontend
 Se utiliza Webpack y Babel para empaquetar y estructurar, en `/webpack.config.js` encontrará todos los archivos utilizados (importados) en el proyecto con su ruta correspondiente.
 
 El archivo `main.js` se encarga de realizar el primer chequeo con la API y luego instanciar las clases.
@@ -38,7 +38,7 @@ Instancia de categorias en `main.js`
 ```
 Esta instancia se encarga de solicitar/cargar los productos según la categoría seleccionada y controla el form de búsqueda.  
 
-#### Index
+### Index
 Se utiliza como referencia el archivo `index.html` ubicado en `/`.
 ```javascript
 //webpack.config.js
@@ -76,7 +76,7 @@ Contenedor para paginación de productos
   </ul>
 ```
 
-#### Controller
+### Controller
 Recibe modelo y vista en su constructor, tiene definida las siguientes funciones.
 - `onCategoriasChanged`: Se ejecuta cuando el modelo tiene datos para categorías.
 - `onProductosChanged`:  Se ejecuta cada vez que los productos a mostrar son cambiados.
@@ -92,7 +92,7 @@ this.view.cambiarPagina(this.cambiarPagina);
 this.view.buscarProducto(this.buscarPorNombre);
 ````
 
-#### Model
+### Model
 Solicita y guarda categorías y productos a API.
 - `this.categorias`: Guarda las categorías obtenidas desde la API al ser instanciada.
 - `getUrlApi`: Punto en común para entregar url de API, recibe texto para personalizar url.
@@ -101,7 +101,7 @@ Solicita y guarda categorías y productos a API.
 - `obtenerProductosPorCategoria`: Recibe id y página de categoría, por defecto la página es 1, retorna productos.
 - `obtenerProductosPorNombre`: Recibe texto para buscar, retorna todos los productos con nombre similar.
 
-#### View
+### View
 En el constructor se generan elementos a los que se hace referencia en `index.html`, los cuales son `dynamicNav`, `productosCont`, `pagination` y los elementos de búsqueda `formBusqueda`, `inputBusqueda`, `btnBuscar`.
 
 ```javascript
@@ -126,7 +126,7 @@ Las funciones `generarBotonNav`, `generarTarjetaProducto` y `generarBotonPaginac
 Utilidad\
 `loading`: Inserta un fragmento con un spinner (icono de loading).
 
-###  Build
+##  Build
 Al realizar `npm run build:dev` se genera la web en la carpeta `/dist`.
 ```javascript
 //webpack.config.js
