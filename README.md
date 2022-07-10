@@ -2,29 +2,25 @@
 Tienda online simple en la que puede ver y buscar productos, el Frontend consume API que a su vez realiza solicitudes a la base de datos proporcionada.
 
 ## Instalación Frontend
-Desde la carpeta de su preferencia ejecute el siguiente comando:
+Desde la carpeta de su preferencia debemos clonar el repositorio:
 ```
-git clone -b Frontend https://github.com/techeca/storeJS.git Frontend
-```
-
-Ingrese al repositorio descargado:
-```
-cd Frontend
+git clone https://github.com/techeca/SimpleStore-Frontend.git
 ```
 
-Instale depencias:
+Ingrese a la carpeta del repositorio e instale las dependencias:
 ```
+cd SimpleStore-Frontend
 npm i
 ```
 
-Para realizar pruebas:
+Para realizar pruebas locales:
 ```
 npm run serve
 ```
 http://localhost:8080
 
 ### Detalles de Frontend
-Se utiliza Webpack y Babel para poder estructurar, en `/webpack.config.js` encontrará todos los archivos utilizados (importados) en el proyecto con su ruta correspondiente.
+Se utiliza Webpack y Babel para empaquetar y estructurar, en `/webpack.config.js` encontrará todos los archivos utilizados (importados) en el proyecto con su ruta correspondiente.
 
 El archivo `main.js` se encarga de realizar el primer chequeo con la API y luego instanciar las clases.
 ```javascript
@@ -43,12 +39,12 @@ Instancia de categorias en `main.js`
 Esta instancia se encarga de solicitar/cargar los productos según la categoría seleccionada y controla el form de búsqueda.  
 
 #### Controller
-Recibe modelo y vista en su constructor, tiene definida las siguientes funciones.\
-`onCategoriasChanged`: Se ejecuta cuando el modelo tiene datos para categorías.\
-`onProductosChanged`:  Se ejecuta cada vez que los productos a mostrar son cambiados.\
-`cambiarCategoria`: Recibe id de categoría, ejecuta la función `obtenerProductosPorCategoria` del modelo.\
-`cambiarPagina`: Recibe id de categoria y página, ejecuta la función `obtenerProductosPorCategoria` del modelo. \
-`buscarPorNombre`: Recibe el texto a buscar, ejecuta la función `obtenerProductosPorNombre` del modelo.
+Recibe modelo y vista en su constructor, tiene definida las siguientes funciones.
+- `onCategoriasChanged`: Se ejecuta cuando el modelo tiene datos para categorías.
+- `onProductosChanged`:  Se ejecuta cada vez que los productos a mostrar son cambiados.
+- `cambiarCategoria`: Recibe id de categoría, ejecuta la función `obtenerProductosPorCategoria` del modelo.
+- `cambiarPagina`: Recibe id de categoria y página, ejecuta la función `obtenerProductosPorCategoria` del modelo.
+- `buscarPorNombre`: Recibe el texto a buscar, ejecuta la función `obtenerProductosPorNombre` del modelo.
 
 Se entregan funciones a Model y View recibido en el constructor.
 ```javascript
@@ -59,14 +55,14 @@ this.view.buscarProducto(this.buscarPorNombre);
 ````
 
 #### Model
-`this.categorias`: Guarda las categorías obtenidas desde la API.\
-`this.productos`: Guarda los productos solicitados a la API.
-
-`getUrlApi`: Punto en común para entregar url de API, recibe texto para personalizar url.\
-`rellenarContenido`: Actualiza los productos solicitados, recibe `onProductosChanged`.\
-`solicitudCategorias`: Solicita categorías a API.\
-`obtenerProductosPorCategoria`: Recibe id de categoría y página, por defecto la página es 1, retorna los productos y total de productos de esa categoría.\
-`obtenerProductosPorNombre`: Recibe texto para buscar, retorna todos los productos con nombre similar.
+Solicita y guarda categorías y productos a API.
+- `this.categorias`: Guarda las categorías obtenidas desde la API.
+- `this.productos`: Guarda los productos solicitados a la API.
+- `getUrlApi`: Punto en común para entregar url de API, recibe texto para personalizar url.
+- `rellenarContenido`: Actualiza los productos solicitados, recibe `onProductosChanged`.
+- `solicitudCategorias`: Solicita categorías a API.
+- `obtenerProductosPorCategoria`: Recibe id y página de categoría, por defecto la página es 1, retorna productos.
+- `obtenerProductosPorNombre`: Recibe texto para buscar, retorna todos los productos con nombre similar.
 
 #### View
 En el constructor se generan elementos a los que se hace referencia en `index.html`, los cuales son `dynamicNav`, `productosCont`, `pagination` y los elementos de búsqueda `formBusqueda`, `inputBusqueda`, `btnBuscar`.
@@ -80,13 +76,13 @@ this.inputBuscar = document.getElementById('inputBusqueda');
 this.btnBuscar = document.getElementById('btnBuscar');
 ```
 
-`busquedaText`: Obtiene el contenido del input de búsqueda.\
-`mostrarCategorias`: Carga los botones de categoría.\
-`insertarProductosEnContainer`: Inserta los productos solicitados por el usuario.\
-`cambiarCategoria`: Evento que se activa con `click` en `categoriasContainer`.\
-`cambiarPagina` : Evento que se activa con `click` en `divPaginacion`.\
-`buscarProducto`: Evento que se activa con `submit` en `formBusqueda`.\
-`limpiarContainerProductos`: Limpia nodos de `categoriasContainer` y `divPaginacion`.
+- `busquedaText`: Obtiene el contenido del input de búsqueda.
+- `mostrarCategorias`: Carga los botones de categoría.
+- `insertarProductosEnContainer`: Inserta los productos solicitados por el usuario.
+- `cambiarCategoria`: Evento que se activa con `click` en `categoriasContainer`.
+- `cambiarPagina` : Evento que se activa con `click` en `divPaginacion`.
+- `buscarProducto`: Evento que se activa con `submit` en `formBusqueda`.
+- `limpiarContainerProductos`: Limpia nodos de `categoriasContainer` y `divPaginacion`.
 
 Las funciones `generarBotonNav`, `generarTarjetaProducto` y `generarBotonPaginacion` retornan un fragmento que luego es insertardo 1 o n veces.
 
@@ -145,9 +141,3 @@ Al realizar `npm run build:dev` se genera la web en la carpeta `/dist`.
 Fue utilizado [Render](https://render.com) para alojar Frontend y API.
 
 [Frontend](https://simplestore-front.onrender.com)
-
-# Img
-
-![Screenshot from 2022-06-12 01 25 34](https://user-images.githubusercontent.com/53408118/173217082-7551629d-dd13-49a9-b444-3643e82a73c5.png)
-![2](https://user-images.githubusercontent.com/53408118/172822106-ad41e86e-508b-4ddd-902d-45bbf3a6d531.PNG)
-![3](https://user-images.githubusercontent.com/53408118/173252441-0d22611c-59f5-4d29-ba14-fb2a0287940a.PNG)

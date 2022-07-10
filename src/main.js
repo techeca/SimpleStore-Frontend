@@ -1,7 +1,7 @@
 import '@fortawesome/fontawesome-free/js/fontawesome'
 import '@fortawesome/fontawesome-free/js/solid'
-import '@fortawesome/fontawesome-free/js/regular'
-import '@fortawesome/fontawesome-free/js/brands'
+//import '@fortawesome/fontawesome-free/js/regular'
+//import '@fortawesome/fontawesome-free/js/brands'
 import '../public/css/main.css'
 import CategoriasController from './Controllers/CategoriasController.js'
 import CategoriasModel from './Models/CategoriasModel.js'
@@ -22,7 +22,7 @@ async function checkConexion(){
   //Realiza un fetch, la respuesta es API ON en caso de existir conexion con la API //igual a response.ok
   console.log('Verificando de conexión...');
   try {
-    let response = await fetch('https://simplestore-api.onrender.com/');
+    let response = await fetch('http://localhost:3000');
     status = await response.json();
   } catch (e) {
     console.log(e.message);
