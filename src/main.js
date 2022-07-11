@@ -18,7 +18,7 @@ async function checkConexion(){
   let status;
   //Realiza un fetch, la respuesta es API ON en caso de existir conexion con la API //igual a response.ok
   try {
-    let response = await fetch('https://simplestore-api.onrender.com');
+    let response = await fetch('https://simplestore-api2.onrender.com');
     status = await response.json();
   } catch (e) {
     console.log(e.message);
